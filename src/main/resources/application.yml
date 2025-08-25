@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /@project.artifactId@
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: @project.artifactId@
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true

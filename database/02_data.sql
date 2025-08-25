@@ -1,0 +1,48 @@
+SET datestyle = "ISO, DMY";
+
+INSERT INTO "BRAND" ("BRAND_ID","NAME","CREATED_AT","UPDATED_AT") VALUES
+                                                                      (1,'Volkswagen', CURRENT_DATE, CURRENT_DATE),
+                                                                      (2,'Chevrolet',  CURRENT_DATE, CURRENT_DATE),
+                                                                      (3,'Fiat',       CURRENT_DATE, CURRENT_DATE),
+                                                                      (4,'Toyota',     CURRENT_DATE, CURRENT_DATE),
+                                                                      (5,'Honda',      CURRENT_DATE, CURRENT_DATE),
+                                                                      (6,'Ford',       CURRENT_DATE, CURRENT_DATE),
+                                                                      (7,'Hyundai',    CURRENT_DATE, CURRENT_DATE),
+                                                                      (8,'Renault',    CURRENT_DATE, CURRENT_DATE),
+                                                                      (9,'Peugeot',    CURRENT_DATE, CURRENT_DATE),
+                                                                      (10,'Jeep',      CURRENT_DATE, CURRENT_DATE);
+
+SELECT setval('brand_id_seq', 10, true);
+
+INSERT INTO "CAR" (
+    "CAR_ID","BRAND_ID","MODEL","YEAR","COLOR","CONDITION","FUEL_TYPE",
+    "TRANSMISSION","MILEAGE","PRICE","STATUS","PLATE","DESCRIPTION","CREATED_AT","UPDATED_AT"
+) VALUES
+      (1001,'VW','Tiguan Allspace R-Line',2021,'Branco','USED','FLEX',2,42000, 209900.00,'AVAILABLE','RDO1A23','Top de linha, teto panorâmico',CURRENT_DATE,CURRENT_DATE),
+      (1002,'CHEV','Onix Plus LTZ',        2022,'Prata','USED','FLEX',2,18000,  88990.00,'AVAILABLE','ABC2B34','Câmera de ré e MyLink',CURRENT_DATE,CURRENT_DATE),
+      (1003,'FIAT','Argo Trekking',        2021,'Vermelho','USED','FLEX',1,25000, 74990.00,'AVAILABLE','DEF3C45','Suspensão elevada',CURRENT_DATE,CURRENT_DATE),
+      (1004,'TOY','Corolla Altis',         2019,'Preto','USED','GASOLINA',2,52000,129900.00,'AVAILABLE','GHI4D56','Banco em couro',CURRENT_DATE,CURRENT_DATE),
+      (1005,'HONDA','Civic Touring',       2020,'Cinza','USED','GASOLINA',2,40000,139900.00,'AVAILABLE','JKL5E67','Turbo 1.5',CURRENT_DATE,CURRENT_DATE),
+      (1006,'FORD','Ranger XLT',           2018,'Azul','USED','DIESEL',2,78000,159900.00,'AVAILABLE','MNO6F78','4x4 cabine dupla',CURRENT_DATE,CURRENT_DATE),
+      (1007,'HYUNDAI','HB20 Comfort',      2021,'Branco','USED','FLEX',1,22000, 67990.00,'AVAILABLE','PQR7G89','Baixa km',CURRENT_DATE,CURRENT_DATE),
+      (1008,'RENAULT','Duster Intense',    2020,'Prata','USED','FLEX',2,35000, 84990.00,'AVAILABLE','STU8H01','Espaçoso',CURRENT_DATE,CURRENT_DATE),
+      (1009,'PEUGEOT','208 Griffe',        2022,'Azul','USED','FLEX',2,12000, 94990.00,'AVAILABLE','VWX9I12','i-Cockpit',CURRENT_DATE,CURRENT_DATE),
+      (1010,'JEEP','Compass Limited',      2021,'Preto','USED','FLEX',2,30000,164900.00,'AVAILABLE','YZA0J23','AD 1.3 T270',CURRENT_DATE,CURRENT_DATE);
+
+SELECT setval('car_id_seq', 1010, true);
+-- =========================
+INSERT INTO "SALE" (
+    "SALE_ID","CUSTOMER_ID","CAR_ID","AMOUNT_PAID","STATUS","CREATED_AT","UPDATED_AT"
+) VALUES
+      (2001,'auth0|user_001','1001','209900.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2002,'auth0|user_002','1002',' 88990.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2003,'auth0|user_003','1003',' 74990.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2004,'auth0|user_004','1004','129900.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2005,'auth0|user_005','1005','139900.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2006,'auth0|user_006','1006','159900.00','PENDING_PAYMENT', CURRENT_DATE,CURRENT_DATE),
+      (2007,'auth0|user_007','1007',' 67990.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2008,'auth0|user_008','1008',' 84990.00','PAID',            CURRENT_DATE,CURRENT_DATE),
+      (2009,'auth0|user_009','1009',' 94990.00','CANCELED',        CURRENT_DATE,CURRENT_DATE),
+      (2010,'auth0|user_010','1010','164900.00','PAID',            CURRENT_DATE,CURRENT_DATE);
+
+SELECT setval('sale_id_seq', 2010, true);
