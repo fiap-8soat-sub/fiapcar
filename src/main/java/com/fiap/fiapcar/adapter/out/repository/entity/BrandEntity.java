@@ -12,22 +12,22 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "BRAND")
+@Table(name = "brand", schema = "public")
 public class BrandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "brand_seq_gen")
     @SequenceGenerator(name = "brand_seq_gen", sequenceName = "brand_id_seq", allocationSize = 1)
-    @Column(name = "BRAND_ID")
+    @Column(name = "brand_id")
     private Long id;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "created_at")
     private LocalDate createdAt;
 
-    @Column(name = "UPDATED_AT", nullable = false)
+    @Column(name = "updated_at")
     private LocalDate updatedAt;
 
 }

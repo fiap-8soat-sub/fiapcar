@@ -1,4 +1,10 @@
 package com.fiap.fiapcar.adapter.in.rest.controllers.contract.response;
 
-public record BrandResponse() {
-}
+import java.time.LocalDate;
+
+public record BrandResponse(
+        Long id,
+        String name,
+        LocalDate createdAt,
+        LocalDate updatedAt
+) { }

@@ -1,10 +1,10 @@
-package com.fiap.fiapcar.application.ports.in;
+package com.fiap.fiapcar.application.ports.out;
 
 import com.fiap.fiapcar.application.model.BrandDTO;
 
 import java.util.List;
 
-public interface BrandPort {
+public interface BrandDatabasePort {
 
     List<BrandDTO> getAllBrands();
 
