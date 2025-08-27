@@ -5,8 +5,10 @@ import com.fiap.fiapcar.application.ports.in.CarPort;
 import com.fiap.fiapcar.application.ports.out.CarDatabasePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -15,10 +17,18 @@ public class CarPortImpl implements CarPort {
     private final CarDatabasePort carDatabasePort;
 
     @Override
-    public List<CarDTO> getAllCars() {
-        log.info("[CarPortImpl.getAllCars] Request");
-        List<CarDTO> dtos = carDatabasePort.getAllCars();
-        log.info("[CarPortImpl.getAllCars] Response: {}", dtos.toString());
+    public Page<CarDTO> getCarsByCryteria(
+            String status,
+            String brandId,
+            Integer modelYear,
+            String model,
+            BigDecimal minPrice,
+            BigDecimal maxPrice,
+            Pageable pageable
+    ) {
+        log.info("[CarPortImpl.getCarsByCryteria] Request");
+        Page<CarDTO> dtos = carDatabasePort.getCarsByCryteria(status, brandId, modelYear, model, minPrice, maxPrice, pageable);
+        log.info("[CarPortImpl.getCarsByCryteria] Response: {}", dtos.toString());
         return dtos;
     }
 

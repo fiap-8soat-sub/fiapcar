@@ -5,12 +5,17 @@ import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.BrandRespo
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CarResponse;
 import com.fiap.fiapcar.adapter.mappers.CarMapper;
 import com.fiap.fiapcar.application.ports.in.CarPort;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -30,9 +35,20 @@ public class CarController {
     }
 
     @GetMapping("/all")
-    public List<CarResponse> getAll(){
+    public Page<CarResponse> getByCryteria(
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false, name = "brandId") String brandId,
+            @RequestParam(required = false, name = "modelYear") Integer modelYear,
+            @RequestParam(required = false) String model,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @ParameterObject @Parameter(description = "page,size,sort=field,asc|desc")
+            Pageable pageable
+    ){
         log.info("[CarController.getAll] Request");
-        List<CarResponse> resp = carMapper.toResponseFromDTOList(carPort.getAllCars());
+        Page<CarResponse> resp = carPort.getCarsByCryteria(
+                status, brandId, modelYear, model, minPrice, maxPrice, pageable
+        ).map(carMapper::toResponseFromDTO);
         log.info("[CarController.getAll] Response: {}", resp.toString());
         return resp;
     }
