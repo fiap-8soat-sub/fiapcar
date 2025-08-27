@@ -60,4 +60,14 @@ public class CarDatabasePortImpl implements CarDatabasePort {
         }
         throw new RuntimeException("Car not found");
     }
+
+    @Override
+    public void createNewCar(CarDTO carDTO) {
+        carRepository.save(carMapper.toEntityFromDTO(carDTO));
+    }
+
+    @Override
+    public void updateCarById(CarDTO carDTO, Long id) {
+
+    }
 }

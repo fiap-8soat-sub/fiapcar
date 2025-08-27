@@ -31,6 +31,7 @@ public class CarController {
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody CarRequest carRequest) {
+        carPort.createNewCar(carMapper.toDTOFromRequest(carRequest));
         return ResponseEntity.ok("create");
     }
 

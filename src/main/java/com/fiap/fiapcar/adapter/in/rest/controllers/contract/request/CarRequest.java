@@ -4,29 +4,59 @@ package com.fiap.fiapcar.adapter.in.rest.controllers.contract.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public record CarRequest(
-        @Schema(name = "", description = "", example = "") Long id,
-        @Schema(name = "", description = "", example = "") String brandId,
         @Schema(
-                name = "modelo",
-                description = "O modelo do carro que eu quero comprar",
-                example = "CIVIC"
-        ) String model,
+                name = "brandId",
+                description = "",
+                example = "VW"
+        ) String brandId,
         @Schema(
-                name = "ano",
-                description = "Ano de lançamento",
-                example = "2005"
+                name = "model",
+                description = "",
+                example = "Tiguan Allspace R-Line 4Motion 350 TSI") String model,
+        @Schema(
+                name = "year",
+                description = "",
+                example = "2021"
         ) Integer year,
-        @Schema(name = "", description = "", example = "") String color,
-        @Schema(name = "", description = "", example = "") String condition,
-        @Schema(name = "", description = "", example = "") String fuelType,
-        @Schema(name = "", description = "", example = "") Long transmission,
         @Schema(
-                name = "kmRodado",
-                description = "O tanto que o carro rodou",
-                example = "340000"
+                name = "color",
+                description = "",
+                example = "BLACK"
+        ) String color,
+        @Schema(
+                name = "condition",
+                description = "",
+                example = "USED"
+        ) String condition,
+        @Schema(
+                name = "fuelType",
+                description = "",
+                example = "GAS"
+        ) String fuelType,
+        @Schema(
+                name = "transmission",
+                description = "",
+                example = "1"
+        ) Long transmission,
+        @Schema(
+                name = "mileage",
+                description = "",
+                example = "52865"
         ) Integer mileage,
-        @Schema(name = "", description = "", example = "") double price,
-        @Schema(name = "", description = "", example = "") String status,
-        @Schema(name = "", description = "", example = "") String plate,
-        @Schema(name = "", description = "", example = "") String description
+        @Schema(
+                name = "price",
+                description = "",
+                example = "179.900"
+        ) double price,
+        @Schema(
+                name = "plate",
+                description = "",
+                example = "GAP2B56"
+        ) String plate,
+        @Schema(
+                name = "description",
+                description = "",
+                example = "PRETTY GOOD"
+        ) String description
 ) {}
+

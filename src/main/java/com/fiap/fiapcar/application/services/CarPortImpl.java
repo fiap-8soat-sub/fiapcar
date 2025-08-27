@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -38,5 +39,23 @@ public class CarPortImpl implements CarPort {
         CarDTO dto = carDatabasePort.getCarById(id);
         log.info("[CarPortImpl.getCarById] Response: {}", dto.toString());
         return dto;
+    }
+
+    @Override
+    public void createNewCar(CarDTO carDTO) {
+        carDatabasePort.createNewCar(fillCarDetails(carDTO));
+    }
+
+    @Override
+    public void updateCarById(CarDTO carDTO, Long id) {
+
+    }
+
+    CarDTO fillCarDetails(CarDTO carDTO) {
+        log.info("[CarPortImpl.fillCarDetails] Request");
+        carDTO.setCreatedAt(LocalDate.now());
+        carDTO.setUpdatedAt(LocalDate.now());
+        carDTO.setStatus("AVALIABLE");
+        return carDTO;
     }
 }

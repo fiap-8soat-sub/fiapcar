@@ -18,4 +18,7 @@ public interface CarDatabasePort {
             Pageable pageable
     );
     CarDTO getCarById(Long id);
+
+    void createNewCar(CarDTO carDTO);
+    void updateCarById(CarDTO carDTO, Long id);
 }
