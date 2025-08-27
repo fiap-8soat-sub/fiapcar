@@ -8,8 +8,8 @@ CREATE SEQUENCE sale_id_seq  START WITH 1 INCREMENT BY 1 CACHE 50;
 CREATE TABLE brand (
                        brand_id   BIGINT DEFAULT NEXT VALUE FOR brand_id_seq,
                        name       VARCHAR(255) NOT NULL,
-                       created_at DATE NOT NULL,
-                       updated_at DATE NOT NULL,
+                       created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                       updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                        CONSTRAINT pk_brand PRIMARY KEY (brand_id),
                        CONSTRAINT uq_brand_name UNIQUE (name)
 );
@@ -31,8 +31,8 @@ CREATE TABLE car (
                      status       VARCHAR(32) NOT NULL,      -- ENUM futuramente
                      plate        VARCHAR(32) NOT NULL,
                      description  TEXT,
-                     created_at   DATE NOT NULL,
-                     updated_at   DATE NOT NULL,
+                     created_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                     updated_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                      CONSTRAINT pk_car PRIMARY KEY (car_id),
                      CONSTRAINT uq_car_plate UNIQUE (plate)
 );
@@ -49,8 +49,8 @@ CREATE TABLE sale (
                       car_id      VARCHAR(255) NOT NULL,      -- mantém String conforme Entity
                       amount_paid VARCHAR(64)  NOT NULL,      -- manter String por enquanto
                       status      VARCHAR(32)  NOT NULL,      -- ENUM futuramente
-                      created_at  DATE NOT NULL,
-                      updated_at  DATE NOT NULL,
+                      created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                      updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                       CONSTRAINT pk_sale PRIMARY KEY (sale_id)
 );
 

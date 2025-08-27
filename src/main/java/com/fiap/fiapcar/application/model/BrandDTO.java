@@ -1,14 +1,14 @@
 package com.fiap.fiapcar.application.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class BrandDTO {
     private Long id;
     private String name;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public BrandDTO(Long id, String name, LocalDate createdAt, LocalDate updatedAt) {
+    public BrandDTO(Long id, String name, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.createdAt = createdAt;
@@ -33,19 +33,19 @@ public class BrandDTO {
         this.name = name;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

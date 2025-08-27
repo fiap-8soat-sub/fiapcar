@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -27,18 +28,15 @@ public class CarPortImpl implements CarPort {
             BigDecimal maxPrice,
             Pageable pageable
     ) {
-        log.info("[CarPortImpl.getCarsByCryteria] Request");
-        Page<CarDTO> dtos = carDatabasePort.getCarsByCryteria(status, brandId, modelYear, model, minPrice, maxPrice, pageable);
-        log.info("[CarPortImpl.getCarsByCryteria] Response: {}", dtos.toString());
-        return dtos;
+        log.info("[CarPortImpl.getCarsByCryteria]");
+        return carDatabasePort.getCarsByCryteria(
+                status, brandId, modelYear, model, minPrice, maxPrice, pageable);
     }
 
     @Override
     public CarDTO getCarById(Long id) {
-        log.info("[CarPortImpl.getCarById] Request");
-        CarDTO dto = carDatabasePort.getCarById(id);
-        log.info("[CarPortImpl.getCarById] Response: {}", dto.toString());
-        return dto;
+        log.info("[CarPortImpl.getCarById]");
+        return carDatabasePort.getCarById(id);
     }
 
     @Override
@@ -47,14 +45,16 @@ public class CarPortImpl implements CarPort {
     }
 
     @Override
-    public void updateCarById(CarDTO carDTO, Long id) {
-
+    public CarDTO updateCarById(CarDTO carDTO, Long id) {
+        log.info("[CarPortImpl.updateCarById] Request");
+        carDTO.setUpdatedAt(LocalDateTime.now());
+        return carDatabasePort.updateCarById(carDTO, id);
     }
 
     CarDTO fillCarDetails(CarDTO carDTO) {
-        log.info("[CarPortImpl.fillCarDetails] Request");
-        carDTO.setCreatedAt(LocalDate.now());
-        carDTO.setUpdatedAt(LocalDate.now());
+        log.info("[CarPortImpl.fillCarDetails]");
+        carDTO.setCreatedAt(LocalDateTime.now());
+        carDTO.setUpdatedAt(LocalDateTime.now());
         carDTO.setStatus("AVALIABLE");
         return carDTO;
     }

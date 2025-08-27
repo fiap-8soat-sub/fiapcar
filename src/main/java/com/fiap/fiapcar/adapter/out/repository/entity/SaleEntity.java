@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -33,8 +33,8 @@ public class SaleEntity {
     //ENUM HERE
 
     @Column(name = "CREATED_AT", nullable = false)
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "UPDATED_AT", nullable = false)
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 }

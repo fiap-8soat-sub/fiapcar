@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 
@@ -67,7 +68,29 @@ public class CarDatabasePortImpl implements CarDatabasePort {
     }
 
     @Override
-    public void updateCarById(CarDTO carDTO, Long id) {
+    public CarDTO updateCarById(CarDTO carDTO, Long id) {
+        CarEntity entity = carRepository.findByCarId(id)
+                .orElseThrow(() -> new RuntimeException("Car not found"));
+        return carMapper.toDTOFromEntity(
+                carRepository.save(
+                        updateCar(carDTO, entity)
+                )
+        );
+    }
 
+    public CarEntity updateCar(CarDTO carDTO, CarEntity carEntity) {
+        Optional.ofNullable(carDTO.getDescription()).ifPresent(carEntity::setDescription);
+        Optional.ofNullable(carDTO.getCondition()).ifPresent(carEntity::setCondition);
+        Optional.ofNullable(carDTO.getBrandId()).ifPresent(carEntity::setBrandId);
+        Optional.ofNullable(carDTO.getColor()).ifPresent(carEntity::setColor);
+        Optional.ofNullable(carDTO.getMileage()).ifPresent(carEntity::setMileage);
+        Optional.ofNullable(carDTO.getModel()).ifPresent(carEntity::setModel);
+        Optional.of(carDTO.getPrice()).ifPresent(carEntity::setPrice);
+        Optional.ofNullable(carDTO.getStatus()).ifPresent(carEntity::setStatus);
+        Optional.ofNullable(carDTO.getYear()).ifPresent(carEntity::setYear);
+        Optional.ofNullable(carDTO.getFuelType()).ifPresent(carEntity::setFuelType);
+        Optional.ofNullable(carDTO.getTransmission()).ifPresent(carEntity::setTransmission);
+        Optional.ofNullable(carDTO.getUpdatedAt()).ifPresent(carEntity::setUpdatedAt);
+        return carEntity;
     }
 }

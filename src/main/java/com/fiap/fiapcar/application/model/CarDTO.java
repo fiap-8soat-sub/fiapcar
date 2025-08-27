@@ -1,7 +1,7 @@
 package com.fiap.fiapcar.application.model;
 
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CarDTO {
     private Long id;
@@ -17,10 +17,10 @@ public class CarDTO {
     private String status;
     private String plate;
     private String description;
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    public CarDTO(Long id, String brandId, String model, Integer year, String color, String condition, String fuelType, Long transmission, Integer mileage, double price, String status, String plate, String description, LocalDate createdAt, LocalDate updatedAt) {
+    public CarDTO(Long id, String brandId, String model, Integer year, String color, String condition, String fuelType, Long transmission, Integer mileage, double price, String status, String plate, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.brandId = brandId;
         this.model = model;
@@ -144,19 +144,19 @@ public class CarDTO {
         this.description = description;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

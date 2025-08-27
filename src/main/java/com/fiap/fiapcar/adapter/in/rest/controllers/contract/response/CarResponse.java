@@ -1,6 +1,6 @@
 package com.fiap.fiapcar.adapter.in.rest.controllers.contract.response;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record CarResponse(
          Long id,
@@ -16,6 +16,6 @@ public record CarResponse(
          String status,
          String plate,
          String description,
-         LocalDate createdAt,
-         LocalDate updatedAt
+         LocalDateTime createdAt,
+         LocalDateTime updatedAt
 ) { }
