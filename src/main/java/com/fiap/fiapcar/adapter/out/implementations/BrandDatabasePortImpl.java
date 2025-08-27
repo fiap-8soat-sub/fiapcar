@@ -7,7 +7,6 @@ import com.fiap.fiapcar.application.model.BrandDTO;
 import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

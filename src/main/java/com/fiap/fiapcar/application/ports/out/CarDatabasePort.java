@@ -1,12 +1,11 @@
-package com.fiap.fiapcar.application.ports.in;
+package com.fiap.fiapcar.application.ports.out;
 
 import com.fiap.fiapcar.application.model.CarDTO;
 
 import java.util.List;
 
-public interface CarPort {
+public interface CarDatabasePort {
 
     List<CarDTO> getAllCars();
-
     CarDTO getCarById(Long id);
 }
