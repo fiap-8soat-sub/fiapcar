@@ -1,8 +1,3 @@
-SET datestyle = 'ISO, DMY';
-
--- =========================
--- BRAND
--- =========================
 INSERT INTO brand (brand_id, name, created_at, updated_at) VALUES
                                                                (1,'Volkswagen', CURRENT_DATE, CURRENT_DATE),
                                                                (2,'Chevrolet',  CURRENT_DATE, CURRENT_DATE),
@@ -15,13 +10,10 @@ INSERT INTO brand (brand_id, name, created_at, updated_at) VALUES
                                                                (9,'Peugeot',    CURRENT_DATE, CURRENT_DATE),
                                                                (10,'Jeep',      CURRENT_DATE, CURRENT_DATE);
 
-SELECT setval('brand_id_seq', 10, true);
+ALTER SEQUENCE brand_id_seq RESTART WITH 11;
 
--- =========================
--- CAR
--- =========================
 INSERT INTO car (
-    car_id, brand_id, model, year, color, condition, fuel_type,
+    car_id, brand_id, model, model_year, color, condition, fuel_type,
     transmission, mileage, price, status, plate, description, created_at, updated_at
 ) VALUES
       (1001,'VW','Tiguan Allspace R-Line',2021,'branco','USED','FLEX',2,42000, 209900.00,'AVAILABLE','RDO1A23','Top de linha, teto panorâmico',CURRENT_DATE,CURRENT_DATE),
@@ -35,11 +27,8 @@ INSERT INTO car (
       (1009,'PEUGEOT','208 Griffe',        2022,'azul','USED','FLEX',2,12000, 94990.00,'AVAILABLE','VWX9I12','i-Cockpit',CURRENT_DATE,CURRENT_DATE),
       (1010,'JEEP','Compass Limited',      2021,'preto','USED','FLEX',2,30000,164900.00,'AVAILABLE','YZA0J23','AD 1.3 T270',CURRENT_DATE,CURRENT_DATE);
 
-SELECT setval('car_id_seq', 1010, true);
+ALTER SEQUENCE car_id_seq RESTART WITH 1011;
 
--- =========================
--- SALE
--- =========================
 INSERT INTO sale (
     sale_id, customer_id, car_id, amount_paid, status, created_at, updated_at
 ) VALUES
@@ -54,4 +43,4 @@ INSERT INTO sale (
       (2009,'auth0|user_009','1009',' 94990.00','CANCELED',        CURRENT_DATE,CURRENT_DATE),
       (2010,'auth0|user_010','1010','164900.00','PAID',            CURRENT_DATE,CURRENT_DATE);
 
-SELECT setval('sale_id_seq', 2010, true);
+ALTER SEQUENCE sale_id_seq RESTART WITH 2011;

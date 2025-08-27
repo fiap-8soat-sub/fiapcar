@@ -4,21 +4,33 @@ server:
     context-path: /@project.artifactId@
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   application:
     name: @project.artifactId@
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
   datasource:
-    url: ${DATASOURCE_URL}
-    username: ${DATASOURCE_USERNAME}
-    password: ${DATASOURCE_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-    jpa:
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          naming:
-            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-            implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-            globally_quoted_identifiers: true
-      show-sql: true
+    url: jdbc:h2:mem:fiapcarDb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+
+logging:
+  level:
+    org.springframework.jdbc.datasource.init: DEBUG

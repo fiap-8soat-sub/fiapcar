@@ -26,7 +26,7 @@ public class CarEntity {
     @Column(name = "MODEL", nullable = false)
     private String model;
 
-    @Column(name = "YEAR", nullable = false)
+    @Column(name = "MODEL_YEAR", nullable = false)
     private Integer year;
 
     @Column(name = "COLOR", nullable = false)
