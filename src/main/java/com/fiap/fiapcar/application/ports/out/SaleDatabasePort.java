@@ -1,17 +1,18 @@
-package com.fiap.fiapcar.application.ports.in;
+package com.fiap.fiapcar.application.ports.out;
 
-import com.fiap.fiapcar.application.model.NewSaleDTO;
 import com.fiap.fiapcar.application.model.SaleDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface SalePort {
+public interface SaleDatabasePort {
 
-    NewSaleDTO createSale(SaleDTO saleDTO);
+    SaleDTO createSale(SaleDTO saleDTO);
 
-    NewSaleDTO getSaleById(Long id);
+    SaleDTO getSaleById(Long id);
 
     Page<SaleDTO> getAllSales(Pageable pageable);
 
     SaleDTO finalizeSale(SaleDTO saleDTO, Long id);
+
+    boolean getSaleByCarId(Long carId);
 }

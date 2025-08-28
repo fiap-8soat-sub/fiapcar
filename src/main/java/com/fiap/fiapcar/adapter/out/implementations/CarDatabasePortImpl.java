@@ -29,7 +29,7 @@ public class CarDatabasePortImpl implements CarDatabasePort {
     @Override
     public Page<CarDTO> getCarsByCryteria(
             String status,
-            String brandId,
+            Long brandId,
             Integer modelYear,
             String model,
             BigDecimal minPrice,
@@ -57,6 +57,7 @@ public class CarDatabasePortImpl implements CarDatabasePort {
 
     @Override
     public CarDTO createNewCar(CarDTO carDTO) {
+        log.info("[CarDatabasePortImpl.createNewCar]");
         return carMapper.toDTOFromEntity(
                 carRepository.save(
                         carMapper.toEntityFromDTO(carDTO)));
@@ -66,5 +67,11 @@ public class CarDatabasePortImpl implements CarDatabasePort {
     public CarDTO updateCarById(CarDTO carDTO, Long id) {
         return carMapper.toDTOFromEntity(
                 carRepository.save(carMapper.toEntityFromDTO(carDTO)));
+    }
+
+    @Override
+    public void updateStatusCarByid(Long id, String status) {
+        log.info("[CarDatabasePortImpl.updateStatusCarById]");
+        carRepository.updateStatus(id, status);
     }
 }

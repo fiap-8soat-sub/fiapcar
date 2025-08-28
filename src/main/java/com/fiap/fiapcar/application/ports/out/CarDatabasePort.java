@@ -10,7 +10,7 @@ public interface CarDatabasePort {
 
     Page<CarDTO> getCarsByCryteria(
             String status,
-            String brandId,
+            Long brandId,
             Integer modelYear,
             String model,
             BigDecimal minPrice,
@@ -21,4 +21,6 @@ public interface CarDatabasePort {
 
     CarDTO createNewCar(CarDTO carDTO);
     CarDTO updateCarById(CarDTO carDTO, Long id);
+
+    void updateStatusCarByid(Long id, String status);
 }

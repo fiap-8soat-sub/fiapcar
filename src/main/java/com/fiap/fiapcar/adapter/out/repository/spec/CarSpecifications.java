@@ -12,7 +12,7 @@ public final class CarSpecifications {
         return (root, q, cb) -> status == null ? null : cb.equal(root.get("status"), status);
     }
 
-    public static Specification<CarEntity> hasBrandId(String brandId) {
+    public static Specification<CarEntity> hasBrandId(Long brandId) {
         return (root, q, cb) -> brandId == null ? null : cb.equal(root.get("brandId"), brandId);
     }
 

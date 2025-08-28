@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public record CarResponse(
          Long id,
-         String brandId,
+         Long brandId,
          String model,
          Integer year,
          String color,

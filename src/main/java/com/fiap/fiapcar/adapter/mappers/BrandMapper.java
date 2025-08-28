@@ -5,6 +5,7 @@ import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.BrandRespo
 import com.fiap.fiapcar.adapter.out.repository.entity.BrandEntity;
 import com.fiap.fiapcar.application.model.BrandDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ import java.util.List;
 public interface BrandMapper {
 
     // Request -> DTO
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
     BrandDTO toDTOFromRequest(BrandRequest request);
 
     // DTO -> Response

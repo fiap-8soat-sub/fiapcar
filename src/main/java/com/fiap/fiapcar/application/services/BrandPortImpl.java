@@ -1,8 +1,6 @@
 package com.fiap.fiapcar.application.services;
 
-import com.fiap.fiapcar.adapter.out.repository.entity.BrandEntity;
 import com.fiap.fiapcar.application.model.BrandDTO;
-import com.fiap.fiapcar.application.model.CarDTO;
 import com.fiap.fiapcar.application.ports.in.BrandPort;
 import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +48,7 @@ public class BrandPortImpl implements BrandPort {
     private BrandDTO fillBrandDetails(BrandDTO brandDTO) {
         log.info("[BrandPortImpl.fillBrandetails]");
         brandDTO.setCreatedAt(LocalDateTime.now());
-        brandDTO.setUpdatedAt(LocalDateTime.now());
+        brandDTO.setUpdatedAt(brandDTO.getCreatedAt());
         return brandDTO;
     }
 

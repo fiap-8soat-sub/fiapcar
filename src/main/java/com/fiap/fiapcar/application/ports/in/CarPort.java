@@ -10,7 +10,7 @@ public interface CarPort {
 
     Page<CarDTO> getCarsByCryteria(
             String status,
-            String brandId,
+            Long brandId,
             Integer modelYear,
             String model,
             BigDecimal minPrice,

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -20,13 +21,13 @@ public class SaleEntity {
     private Long id;
 
     @Column(name = "CUSTOMER_ID", nullable = false)
-    private String customerId;
+    private UUID customerId;
 
     @Column(name = "CAR_ID", nullable = false)
-    private String carId;
+    private Long carId;
 
     @Column(name = "AMOUNT_PAID", nullable = false)
-    private String amountPaid;
+    private double amountPaid;
 
     @Column(name = "STATUS", nullable = false)
     private String status;

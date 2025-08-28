@@ -47,7 +47,7 @@ public class CarController {
     @GetMapping("/list")
     public Page<CarResponse> getByCryteria(
             @RequestParam(required = false) String status,
-            @RequestParam(required = false, name = "brandId") String brandId,
+            @RequestParam(required = false, name = "brandId") Long brandId,
             @RequestParam(required = false, name = "modelYear") Integer modelYear,
             @RequestParam(required = false) String model,
             @RequestParam(required = false) BigDecimal minPrice,

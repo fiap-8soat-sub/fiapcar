@@ -2,7 +2,6 @@ package com.fiap.fiapcar.adapter.in.rest.controllers;
 
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.request.BrandRequest;
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.BrandResponse;
-import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CarResponse;
 import com.fiap.fiapcar.adapter.mappers.BrandMapper;
 import com.fiap.fiapcar.application.ports.in.BrandPort;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,8 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -46,13 +43,16 @@ public class BrandController {
         return resp;
     }
 
+    @Operation(
+            summary = "List all brands",
+            description = "This endpoint return a list of brands")
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/all")
     public Page<BrandResponse> getAll(
             @ParameterObject @Parameter(description = "page,size,sort=field,asc|desc")
             Pageable pageable
     ){
         log.info("[BrandController.getAll] Request");
-        log.info("[CarController.getAll] Request");
         Page<BrandResponse> resp = brandPort.getAllBrands(pageable).map(brandMapper::toResponseFromDTO);
         log.info("[BrandController.getAll] Response: {}", resp.toString());
         return resp;

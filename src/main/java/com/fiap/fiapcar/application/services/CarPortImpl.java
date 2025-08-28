@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -23,7 +22,7 @@ public class CarPortImpl implements CarPort {
     @Override
     public Page<CarDTO> getCarsByCryteria(
             String status,
-            String brandId,
+            Long brandId,
             Integer modelYear,
             String model,
             BigDecimal minPrice,
@@ -60,7 +59,7 @@ public class CarPortImpl implements CarPort {
     private CarDTO fillCarDetails(CarDTO carDTO) {
         log.info("[CarPortImpl.fillCarDetails]");
         carDTO.setCreatedAt(LocalDateTime.now());
-        carDTO.setUpdatedAt(LocalDateTime.now());
+        carDTO.setUpdatedAt(carDTO.getCreatedAt());
         carDTO.setStatus("AVALIABLE");
         return carDTO;
     }

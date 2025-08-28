@@ -5,24 +5,20 @@ import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CarRespons
 import com.fiap.fiapcar.adapter.out.repository.entity.CarEntity;
 import com.fiap.fiapcar.application.model.CarDTO;
 import org.mapstruct.Mapper;
-
-import java.util.List;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface CarMapper {
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "status", ignore = true)
     CarDTO toDTOFromRequest(CarRequest request);
 
-    // DTO -> Response
-    CarResponse toResponseFromDTO(CarDTO brandDTO);
+    CarResponse toResponseFromDTO(CarDTO carDTO);
 
-    // Entity -> DTO
     CarDTO toDTOFromEntity(CarEntity entity);
 
-    // DTO -> Entity
     CarEntity toEntityFromDTO(CarDTO dto);
-
-    // Listas
-    List<CarResponse> toResponseFromDTOList(List<CarDTO> dtoList);
-    List<CarDTO> toDTOFromEntityList(List<CarEntity> entityList);
 }

@@ -7,8 +7,8 @@ public record CarRequest(
         @Schema(
                 name = "brandId",
                 description = "",
-                example = "VW"
-        ) String brandId,
+                example = "1"
+        ) Long brandId,
         @Schema(
                 name = "model",
                 description = "",
