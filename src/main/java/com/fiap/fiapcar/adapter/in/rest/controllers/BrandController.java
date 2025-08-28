@@ -1,12 +1,20 @@
 package com.fiap.fiapcar.adapter.in.rest.controllers;
 
+import com.fiap.fiapcar.adapter.in.rest.controllers.contract.request.BrandRequest;
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.BrandResponse;
+import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CarResponse;
 import com.fiap.fiapcar.adapter.mappers.BrandMapper;
 import com.fiap.fiapcar.application.ports.in.BrandPort;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,19 +30,38 @@ public class BrandController {
     private final BrandMapper brandMapper;
 
 
+    @Operation(
+            summary = "Create a new brand",
+            description = "This endpoint create a new brand")
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping
-    public ResponseEntity<String> create(){
-        return ResponseEntity.ok("create");
+    public BrandResponse create(
+            @RequestBody @Valid BrandRequest brandRequest
+            ){
+        log.info("[BrandPortImpl.createBrand]");
+        BrandResponse resp = brandMapper.toResponseFromDTO(
+                brandPort.createBrand(
+                        brandMapper.toDTOFromRequest(brandRequest)));
+        log.info("[BrandPortImpl.createBrand] Response: {}", resp);
+        return resp;
     }
 
     @GetMapping("/all")
-    public List<BrandResponse> getAll(){
+    public Page<BrandResponse> getAll(
+            @ParameterObject @Parameter(description = "page,size,sort=field,asc|desc")
+            Pageable pageable
+    ){
         log.info("[BrandController.getAll] Request");
-        List<BrandResponse> resp = brandMapper.toResponseFromDTOList(brandPort.getAllBrands());
+        log.info("[CarController.getAll] Request");
+        Page<BrandResponse> resp = brandPort.getAllBrands(pageable).map(brandMapper::toResponseFromDTO);
         log.info("[BrandController.getAll] Response: {}", resp.toString());
         return resp;
     }
 
+    @Operation(
+            summary = "Get specific brand by id",
+            description = "This endpoint returns a single brand by his id")
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{brandId}")
     public BrandResponse get(
             @PathVariable Long brandId
@@ -45,17 +72,20 @@ public class BrandController {
         return resp;
     }
 
+    @Operation(
+            summary = "Update specific brand by id",
+            description = "This endpoint update a single brand by his id")
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("{brandId}")
-    public ResponseEntity<String> update(
-            @PathVariable Long brandId
+    public BrandResponse update(
+            @PathVariable Long brandId,
+            @RequestBody @Valid BrandRequest brandRequest
     ){
-        return ResponseEntity.ok("update");
-    }
-
-    @DeleteMapping("{brandId}")
-    public ResponseEntity<String> delete(
-            @PathVariable Long brandId
-    ){
-        return ResponseEntity.ok("delete");
+        log.info("[BrandController.update]");
+        BrandResponse resp = brandMapper.toResponseFromDTO(
+                brandPort.updateBrand(
+                        brandMapper.toDTOFromRequest(brandRequest), brandId));
+        log.info("[BrandController.update] Response: {}", resp.toString());
+        return resp;
     }
 }

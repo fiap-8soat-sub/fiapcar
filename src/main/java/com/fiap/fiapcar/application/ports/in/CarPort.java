@@ -19,7 +19,7 @@ public interface CarPort {
 
     CarDTO getCarById(Long id);
 
-    void createNewCar(CarDTO carDTO);
+    CarDTO createNewCar(CarDTO carDTO);
 
     CarDTO updateCarById(CarDTO carDTO, Long id);
 }

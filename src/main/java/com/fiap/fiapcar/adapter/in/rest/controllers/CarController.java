@@ -13,7 +13,6 @@ import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -34,9 +33,11 @@ public class CarController {
             description = "This endpoint will create a new car with parameters")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody CarRequest carRequest) {
-        carPort.createNewCar(carMapper.toDTOFromRequest(carRequest));
-        return ResponseEntity.ok("create");
+    public CarResponse create(@RequestBody CarRequest carRequest) {
+        log.info("[CarController.create]");
+        return carMapper.toResponseFromDTO(
+                carPort.createNewCar(
+                        carMapper.toDTOFromRequest(carRequest)));
     }
 
     @Operation(
@@ -81,7 +82,7 @@ public class CarController {
             summary = "Update a specific car by id",
             description = "This endpoint update a single car by his id")
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/{carId}")
+    @PatchMapping("/{carId}")
     public CarResponse updateCarByid(
             @PathVariable Long carId,
             @RequestBody CarRequest carRequest

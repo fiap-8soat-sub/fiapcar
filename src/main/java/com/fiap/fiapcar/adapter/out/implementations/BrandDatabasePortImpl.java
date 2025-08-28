@@ -7,10 +7,10 @@ import com.fiap.fiapcar.application.model.BrandDTO;
 import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
 
 @Component
 @Slf4j
@@ -22,22 +22,29 @@ public class BrandDatabasePortImpl implements BrandDatabasePort {
 
 
     @Override
-    public List<BrandDTO> getAllBrands() {
+    public Page<BrandDTO> getAllBrands(Pageable pageable) {
         log.info("[BrandDatabasePortImpl.getAllBrands] Request");
-        List<BrandDTO> dtos = brandMapper.toDTOFromEntityList(brandRepository.findAll());
-        log.info("[BrandDatabasePortImpl.getAllBrands] Response: {}", dtos.toString());
-        return dtos;
+        return brandRepository.findAll(pageable).map(brandMapper::toDTOFromEntity);
     }
 
     @Override
     public BrandDTO getBrandById(Long id) {
         log.info("[BrandDatabasePortImpl.getBrandById] Request");
-        Optional<BrandEntity> brandEntity = brandRepository.findById(id);
-        if (brandEntity.isPresent()) {
-            BrandDTO dto = brandMapper.toDTOFromEntity(brandEntity.get());
-            log.info("[BrandDatabasePortImpl.getBrandById] Response: {}", dto.toString());
-            return dto;
-        }
-        throw new RuntimeException("Brand not found");
+        return brandMapper.toDTOFromEntity(brandRepository.findById(id).orElse(null));
+    }
+
+    @Override
+    public BrandDTO createBrand(BrandDTO brandDTO) {
+        log.info("[BrandDatabasePortImpl.createBrand]");
+        return brandMapper.toDTOFromEntity(
+                brandRepository.save(
+                        brandMapper.toEntityFromDTO(brandDTO)));
+    }
+
+    @Override
+    public BrandDTO updateBrand(BrandDTO brandDTO, Long id) {
+        log.info("[BrandDatabasePort.updateBrand]");
+        return brandMapper.toDTOFromEntity(
+                brandRepository.save(brandMapper.toEntityFromDTO(brandDTO)));
     }
 }
