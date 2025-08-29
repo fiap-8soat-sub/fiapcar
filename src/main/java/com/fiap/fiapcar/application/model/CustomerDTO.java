@@ -1,18 +1,23 @@
 package com.fiap.fiapcar.application.model;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 public class CustomerDTO {
     private String name;
     private String email;
-    private String id;
+    private UUID id;
     private String password;
     private String username;
+    private LocalDateTime createdAt;
 
-    public CustomerDTO(String name, String email, String id, String password, String username) {
+    public CustomerDTO(String name, String email, UUID id, String password, String username,  LocalDateTime createdAt) {
         this.name = name;
         this.email = email;
         this.id = id;
         this.password = password;
         this.username = username;
+        this.createdAt = createdAt;
     }
 
     public CustomerDTO() {}
@@ -33,11 +38,11 @@ public class CustomerDTO {
         this.email = email;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -53,6 +58,12 @@ public class CustomerDTO {
     }
     public void setUsername(String username) {
         this.username = username;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

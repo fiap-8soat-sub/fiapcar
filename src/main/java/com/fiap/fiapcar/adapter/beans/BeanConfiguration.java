@@ -2,10 +2,7 @@ package com.fiap.fiapcar.adapter.beans;
 
 import com.fiap.fiapcar.application.model.CustomerDTO;
 import com.fiap.fiapcar.application.ports.in.*;
-import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
-import com.fiap.fiapcar.application.ports.out.CarDatabasePort;
-import com.fiap.fiapcar.application.ports.out.CustomerCognitoPort;
-import com.fiap.fiapcar.application.ports.out.SaleDatabasePort;
+import com.fiap.fiapcar.application.ports.out.*;
 import com.fiap.fiapcar.application.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +38,9 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public CustomerPort customerPort(CustomerCognitoPort customerCognitoPort) {
-        return new CustomerPortImpl(customerCognitoPort);
+    public CustomerPort customerPort(
+            CustomerCognitoPort customerCognitoPort,
+            CustomerDatabasePort customerDatabasePort) {
+        return new CustomerPortImpl(customerCognitoPort, customerDatabasePort);
     }
 }

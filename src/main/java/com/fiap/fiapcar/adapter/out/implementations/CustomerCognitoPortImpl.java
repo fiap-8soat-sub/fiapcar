@@ -28,10 +28,9 @@ public class CustomerCognitoPortImpl implements CustomerCognitoPort {
                             AttributeType.builder().name("email").value(email).build(),
                             AttributeType.builder().name("email_verified").value("true").build()
                     )
-                    .messageAction(MessageActionType.SUPPRESS) // não envia e-mail do Cognito
+                    .messageAction(MessageActionType.SUPPRESS)
                     .build());
 
-            // define senha permanente (sem NEW_PASSWORD_REQUIRED)
             cognito.adminSetUserPassword(AdminSetUserPasswordRequest.builder()
                     .userPoolId(userPoolId)
                     .username(username)
@@ -39,7 +38,6 @@ public class CustomerCognitoPortImpl implements CustomerCognitoPort {
                     .permanent(true)
                     .build());
 
-            // tenta pegar o sub do próprio create
             var sub = create.user().attributes().stream()
                     .filter(a -> "sub".equals(a.name()))
                     .map(AttributeType::value)
@@ -52,14 +50,14 @@ public class CustomerCognitoPortImpl implements CustomerCognitoPort {
                         .filter(a -> "sub".equals(a.name()))
                         .map(AttributeType::value)
                         .findFirst()
-                        .orElseThrow(() -> new IllegalStateException("sub não encontrado no Cognito"));
+                        .orElseThrow(() -> new IllegalStateException("sub not found on Cognito"));
             }
             return sub;
 
         } catch (software.amazon.awssdk.services.cognitoidentityprovider.model.UsernameExistsException e) {
-            throw new IllegalArgumentException("Usuário já existe no Cognito.", e);
+            throw new IllegalArgumentException("Username already exist on Cognito", e);
         } catch (software.amazon.awssdk.services.cognitoidentityprovider.model.InvalidPasswordException e) {
-            throw new IllegalArgumentException("Senha não atende à política do Cognito.", e);
+            throw new IllegalArgumentException("password don't match with Cognito security policy", e);
         }
     }
 }

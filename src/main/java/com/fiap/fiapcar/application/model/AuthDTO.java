@@ -10,9 +10,9 @@ public class AuthDTO {
     private String idToken;
     private String accessToken;
     private String refreshToken;
-    private Integer expiresI;
+    private Integer expiresIn;
 
-    public AuthDTO(String refreshToken, boolean ok, String challenge, String session, Map<String, String> challengeParams, String idToken, String accessToken, Integer expiresI) {
+    public AuthDTO(String refreshToken, boolean ok, String challenge, String session, Map<String, String> challengeParams, String idToken, String accessToken, Integer expiresIn) {
         this.refreshToken = refreshToken;
         this.ok = ok;
         this.challenge = challenge;
@@ -20,7 +20,7 @@ public class AuthDTO {
         this.challengeParams = challengeParams;
         this.idToken = idToken;
         this.accessToken = accessToken;
-        this.expiresI = expiresI;
+        this.expiresIn = expiresIn;
     }
 
     public AuthDTO() {}
@@ -81,11 +81,11 @@ public class AuthDTO {
         this.accessToken = accessToken;
     }
 
-    public Integer getExpiresI() {
-        return expiresI;
+    public Integer getExpiresIn() {
+        return expiresIn;
     }
 
-    public void setExpiresI(Integer expiresI) {
-        this.expiresI = expiresI;
+    public void setExpiresI(Integer expiresIn) {
+        this.expiresIn = expiresIn;
     }
 }

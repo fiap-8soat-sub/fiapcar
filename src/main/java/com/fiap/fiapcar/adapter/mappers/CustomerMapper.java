@@ -2,6 +2,7 @@ package com.fiap.fiapcar.adapter.mappers;
 
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.request.CustomerRequest;
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CustomerResponse;
+import com.fiap.fiapcar.adapter.out.repository.entity.CustomerEntity;
 import com.fiap.fiapcar.application.model.CustomerDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,8 +12,14 @@ public interface CustomerMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "password", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
     CustomerDTO toDTOFromRequest(CustomerRequest request);
 
 
-    CustomerResponse toResponseFromDTO(CustomerDTO brandDTO);
+    CustomerResponse toResponseFromDTO(CustomerDTO customerDTO);
+
+    CustomerDTO toDTOFromEntity(CustomerEntity entity);
+
+
+    CustomerEntity toEntityFromDTO(CustomerDTO dto);
 }

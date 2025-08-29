@@ -20,6 +20,7 @@ public interface SaleMapper {
     @Mapping(source = "car", target = "car")
     SaleResponse toResponseFromNewDTO(NewSaleDTO newSaleDTO);
 
+    @Mapping(target = "car", ignore = true)
     SaleResponse toResponseFromDTO(SaleDTO saleDTO);
 
     SaleDTO toDTOFromEntity(SaleEntity entity);

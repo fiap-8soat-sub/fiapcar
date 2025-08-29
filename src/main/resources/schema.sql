@@ -47,17 +47,37 @@ CREATE INDEX idx_car_price    ON car(price);
 CREATE INDEX idx_car_brand_id ON car(brand_id);
 
 -- =========================
+-- CUSTOMER
+-- =========================
+CREATE TABLE customer (
+                          customer_id UUID PRIMARY KEY,
+                          name        VARCHAR(255) NOT NULL,
+                          email       VARCHAR(255) NOT NULL,
+                          username    VARCHAR(64)  NOT NULL,
+                          password       VARCHAR(255) NOT NULL,
+                          created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                          CONSTRAINT uq_customer_email    UNIQUE (email),
+                          CONSTRAINT uq_customer_username UNIQUE (username)
+);
+
+-- Índices úteis (além dos UNIQUE)
+CREATE INDEX idx_customer_email    ON customer(email);
+CREATE INDEX idx_customer_username ON customer(username);
+
+-- =========================
 -- SALE
 -- =========================
 CREATE TABLE sale (
                       sale_id     BIGINT DEFAULT NEXT VALUE FOR sale_id_seq,
-                      customer_id UUID NOT NULL,                  -- agora UUID
-                      car_id      BIGINT NOT NULL,                -- agora LONG, FK -> car
-                      amount_paid VARCHAR(64) NOT NULL,           -- mantém String por enquanto
+                      customer_id UUID   NOT NULL,                 -- FK -> customer
+                      car_id      BIGINT NOT NULL,                 -- FK -> car
+                      amount_paid VARCHAR(64) NOT NULL,            -- mantido como String por enquanto
                       status      VARCHAR(32) NOT NULL,
                       created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                       updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                       CONSTRAINT pk_sale PRIMARY KEY (sale_id),
+                      CONSTRAINT fk_sale_customer FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+                          ON UPDATE RESTRICT ON DELETE RESTRICT,
                       CONSTRAINT fk_sale_car FOREIGN KEY (car_id) REFERENCES car(car_id)
                           ON UPDATE RESTRICT ON DELETE RESTRICT
 );
@@ -65,3 +85,5 @@ CREATE TABLE sale (
 CREATE INDEX idx_sale_status   ON sale(status);
 CREATE INDEX idx_sale_customer ON sale(customer_id);
 CREATE INDEX idx_sale_car      ON sale(car_id);
+
+
