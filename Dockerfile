@@ -13,6 +13,6 @@ ARG JAR_VERSION
 
 RUN echo "Usando versão do JAR: ${JAR_VERSION}"
 
-COPY --from=builder /app/target/fiapeats-${JAR_VERSION}.jar app.jar
+COPY --from=builder /app/target/*.jar app.jar
 
 CMD ["java", "-jar", "app.jar"]
