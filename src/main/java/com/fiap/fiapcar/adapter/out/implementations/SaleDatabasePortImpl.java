@@ -2,7 +2,6 @@ package com.fiap.fiapcar.adapter.out.implementations;
 
 import com.fiap.fiapcar.adapter.mappers.SaleMapper;
 import com.fiap.fiapcar.adapter.out.repository.SaleRepository;
-import com.fiap.fiapcar.adapter.out.repository.entity.CarEntity;
 import com.fiap.fiapcar.adapter.out.repository.entity.SaleEntity;
 import com.fiap.fiapcar.application.model.SaleDTO;
 import com.fiap.fiapcar.application.ports.out.SaleDatabasePort;

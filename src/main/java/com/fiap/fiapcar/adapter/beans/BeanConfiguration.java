@@ -1,32 +1,47 @@
 package com.fiap.fiapcar.adapter.beans;
 
-import com.fiap.fiapcar.application.ports.in.BrandPort;
-import com.fiap.fiapcar.application.ports.in.CarPort;
-import com.fiap.fiapcar.application.ports.in.SalePort;
+import com.fiap.fiapcar.application.model.CustomerDTO;
+import com.fiap.fiapcar.application.ports.in.*;
 import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
 import com.fiap.fiapcar.application.ports.out.CarDatabasePort;
+import com.fiap.fiapcar.application.ports.out.CustomerCognitoPort;
 import com.fiap.fiapcar.application.ports.out.SaleDatabasePort;
-import com.fiap.fiapcar.application.services.BrandPortImpl;
-import com.fiap.fiapcar.application.services.CarPortImpl;
-import com.fiap.fiapcar.application.services.SalePortImpl;
+import com.fiap.fiapcar.application.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 
 @Configuration
 public class BeanConfiguration {
 
     @Bean
-    public BrandPort brandPort(BrandDatabasePort brandDatabasePort) {
+    public BrandPort brandPort(
+            BrandDatabasePort brandDatabasePort) {
         return new BrandPortImpl(brandDatabasePort);
     }
 
     @Bean
-    public CarPort carPort(CarDatabasePort carDatabasePort) {
+    public CarPort carPort(
+            CarDatabasePort carDatabasePort) {
         return new CarPortImpl(carDatabasePort);
     }
 
     @Bean
-    public SalePort salePort(SaleDatabasePort saleDatabasePort, CarDatabasePort carDatabasePort) {
+    public SalePort salePort(
+            SaleDatabasePort saleDatabasePort,
+            CarDatabasePort carDatabasePort) {
         return new SalePortImpl(carDatabasePort, saleDatabasePort);
+    }
+
+    @Bean
+    public CognitoAuthPort cognitoAuthPort(
+            CognitoIdentityProviderClient cognitoIdentityProviderClient,
+            CognitoProperties  props) {
+        return new CognitoAuthPortImpl(cognitoIdentityProviderClient, props);
+    }
+
+    @Bean
+    public CustomerPort customerPort(CustomerCognitoPort customerCognitoPort) {
+        return new CustomerPortImpl(customerCognitoPort);
     }
 }

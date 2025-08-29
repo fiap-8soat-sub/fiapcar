@@ -5,6 +5,7 @@ import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.CarRespons
 import com.fiap.fiapcar.adapter.in.rest.controllers.contract.response.SaleResponse;
 import com.fiap.fiapcar.adapter.mappers.SaleMapper;
 import com.fiap.fiapcar.application.ports.in.SalePort;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -26,6 +28,10 @@ public class SaleController {
     private final SaleMapper saleMapper;
     private final SalePort salePort;
 
+    @Operation(
+            summary = "Create new Sale",
+            description = "This endpoint will create a new sale or reserve a car")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/new")
     public SaleResponse create(
             @Valid @RequestBody SaleRequest saleRequest
@@ -38,6 +44,10 @@ public class SaleController {
         return resp;
     }
 
+    @Operation(
+            summary = "Get list of sales",
+            description = "This endpoint returns a list of sales")
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/all")
     public Page<SaleResponse> getAll(
             @ParameterObject @Parameter(description = "page,size,sort=field,asc|desc")
@@ -50,6 +60,10 @@ public class SaleController {
         return resp;
     }
 
+    @Operation(
+            summary = "Get specific sale by id",
+            description = "This endpoint returns a single sale by his id")
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{saleId}")
     public SaleResponse get(
             @PathVariable Long saleId
@@ -60,6 +74,10 @@ public class SaleController {
         return resp;
     }
 
+    @Operation(
+            summary = "Finalize a reserved sale by id",
+            description = "This endpoint finalize a sale by his id")
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/reserved/{saleId}/pay")
     public SaleResponse update(
             @PathVariable Long saleId,

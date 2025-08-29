@@ -22,7 +22,7 @@ public class SwaggerConfiguration {
     @Bean
     public GroupedOpenApi internal() {
         return GroupedOpenApi.builder()
-                .pathsToMatch("/car/**", "/brand/**", "/sale/**")
+                .pathsToMatch("/car/**", "/brand/**", "/sale/**", "/auth/**", "/customer/**")
                 .group("interno")
                 .build();
     }

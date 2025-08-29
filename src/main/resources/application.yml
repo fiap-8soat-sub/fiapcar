@@ -34,3 +34,10 @@ spring:
 logging:
   level:
     org.springframework.jdbc.datasource.init: DEBUG
+
+aws:
+  cognito:
+    region: us-east-1
+    user-pool-id: us-east-1_EY55Ihdc5
+    app-client-id: "4pa18la773atktc38df5etp2ht"
+    app-client-secret: "d3eati6jp26ubpt38vg4e1or2isbr3q5mds7iqmo9l5am4nv655"
