@@ -1,0 +1,50 @@
+name: Deploy to ECS (Fargate)
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY_URI: ${{ secrets.ECR_REPOSITORY_URI }}
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build & Push image
+        run: |
+          echo "ECR_REPOSITORY_URI=${ECR_REPOSITORY_URI}"
+          echo "IMAGE_TAG=${IMAGE_TAG}"
+          IMAGE_URI="${ECR_REPOSITORY_URI}:${IMAGE_TAG}"
+          docker build -t "${IMAGE_URI}" .
+          docker push "${IMAGE_URI}"
+          docker tag "${IMAGE_URI}" "${ECR_REPOSITORY_URI}:latest"
+          docker push "${ECR_REPOSITORY_URI}:latest"
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: infra
+        run: terraform init
+
+      - name: Terraform Apply (image tag = commit SHA)
+        working-directory: infra
+        env:
+          TF_VAR_image_tag: ${{ env.IMAGE_TAG }}
+        run: terraform apply -auto-approve
