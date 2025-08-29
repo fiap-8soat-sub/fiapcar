@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket         = "terraform-backend-fiapcar"
+        bucket         = "terraform-backend-fiapcar-577638369685-us-east-1"
         key            = "state/fiapeats-ms-pedido-db/terraform.tfstate"
         region         = "us-east-1"
         encrypt        = true
