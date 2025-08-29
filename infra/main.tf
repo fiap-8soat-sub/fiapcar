@@ -11,6 +11,17 @@ terraform {
     }
 }
 
+resource "aws_ecs_cluster" "app" {
+    name = var.cluster_name
+
+    setting {
+        name  = "containerInsights"
+        value = "enabled"
+    }
+
+    capacity_providers = ["FARGATE", "FARGATE_SPOT"]
+}
+
 resource "aws_ecs_task_definition" "app" {
     family                   = var.task_family
     requires_compatibilities = ["FARGATE"]
@@ -42,7 +53,7 @@ resource "aws_ecs_task_definition" "app" {
 
 resource "aws_ecs_service" "app_service" {
     name            = var.service_name
-    cluster         = var.cluster_name
+    cluster         = aws_ecs_cluster.app.id
     task_definition = aws_ecs_task_definition.app.arn
     desired_count   = 1
     launch_type     = "FARGATE"
