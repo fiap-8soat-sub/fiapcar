@@ -15,19 +15,6 @@ terraform {
 }
 
 ############################################
-# Variáveis (defaults práticos)
-############################################
-variable "aws_region"       { default = "us-east-1" }
-variable "cluster_name"     { default = "cluster" }
-variable "service_name"     { default = "fiapcar-service" }
-variable "task_family"      { default = "fiapcar-task" }
-variable "ecr_repo_name"    { default = "fiapcar" } # nome do repositório no ECR
-variable "image_tag" {
-    description = "Tag da imagem (ex: commit SHA). Defina via TF_VAR_image_tag no pipeline."
-    type        = string
-}
-
-############################################
 # Rede: VPC + Subnets Públicas + IGW + Rota
 ############################################
 resource "aws_vpc" "app" {

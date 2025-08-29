@@ -1,12 +1,9 @@
-variable "aws_region" {}
-variable "cluster_name" {}
-variable "service_name" {}
-variable "task_family" {}
-variable "ecr_repo_url" {}
-variable "image_tag" {}
-variable "subnet_ids" {
-  type = list(string)
-}
-variable "security_group_ids" {
-  type = list(string)
+variable "aws_region"       { default = "us-east-1" }
+variable "cluster_name"     { default = "cluster" }
+variable "service_name"     { default = "fiapcar-service" }
+variable "task_family"      { default = "fiapcar-task" }
+variable "ecr_repo_name"    { default = "fiapcar" } # nome do repositório no ECR
+variable "image_tag" {
+  description = "Tag da imagem"
+  type        = string
 }
