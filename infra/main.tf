@@ -18,8 +18,6 @@ resource "aws_ecs_cluster" "app" {
         name  = "containerInsights"
         value = "enabled"
     }
-
-    capacity_providers = ["FARGATE", "FARGATE_SPOT"]
 }
 
 resource "aws_ecs_task_definition" "app" {
