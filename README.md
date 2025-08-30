@@ -41,7 +41,7 @@ Swagger detalhado pode ser encontrado aqui:
 [Download Swagger](docs/swagger.yaml)
 
 Uma collection com exemplos válidos pode ser encontrada aqui:
-[Download Collection](swaggerApi.yaml)
+[Download Collection](docs/collections.yaml)
 
 > Base path local (com o `context-path`): `http://localhost:8080/fiapcar`
 
@@ -117,7 +117,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ### Desenho da Arquitetura do Projeto
-![Alt text](arquitetura.png "a title")
+![Alt text](docs/arq_tec.png "a title")
 
 ## Desenho da Arquitetura da Aplicação
 ![Alt text](docs/hexagonal.png "a title")
