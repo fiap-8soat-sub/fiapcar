@@ -65,7 +65,7 @@ resource "aws_route_table_association" "b" {
 }
 
 ############################################
-# Security Group (abre 8086/tcp)
+# Security Group (abre 8080/tcp)
 ############################################
 resource "aws_security_group" "ecs_service" {
     name        = "fiapcar-sg"
@@ -73,8 +73,8 @@ resource "aws_security_group" "ecs_service" {
     vpc_id      = aws_vpc.app.id
 
     ingress {
-        from_port   = 8086
-        to_port     = 8086
+        from_port   = 8080
+        to_port     = 8080
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
