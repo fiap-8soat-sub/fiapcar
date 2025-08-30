@@ -42,7 +42,7 @@ INSERT INTO customer (customer_id, name, email, username, password, created_at) 
                                                                                     ('77777777-7777-7777-7777-777777777777','Gi',      'gi@example.com',      'gi',      'pwd', CURRENT_TIMESTAMP),
                                                                                     ('88888888-8888-8888-8888-888888888888','Helena',  'helena@example.com',  'helena',  'pwd', CURRENT_TIMESTAMP),
                                                                                     ('99999999-9999-9999-9999-999999999999','Igor',    'igor@example.com',    'igor',    'pwd', CURRENT_TIMESTAMP),
-                                                                                    ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa','Julia',   'julia@example.com',   'julia',   'pwd', CURRENT_TIMESTAMP);
+                                                                                    ('d4e84428-20d1-7013-9c98-853f2c921f08','Dilan Lima',   'dilan_limacampos@hotmail.com',   'dilanlima',   '[RR}L8?r#''tZ', CURRENT_TIMESTAMP);
 
 -- ======== SALE
 INSERT INTO sale (

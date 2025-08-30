@@ -1,0 +1,551 @@
+type: collection.insomnia.rest/5.0
+name: FiapCar
+meta:
+  id: wrk_fa6d1bd2c3114ede89328950a0ec3d0a
+  created: 1756437363139
+  modified: 1756437363139
+  description: ""
+collection:
+  - name: Sale
+    meta:
+      id: fld_19ccc52c7b6542448de994f7ade0bf58
+      created: 1756437372907
+      modified: 1756565399209
+      sortKey: -1756437372907
+      description: ""
+    children:
+      - url: http://localhost:8080/fiapcar/sale/new
+        name: New Sale
+        meta:
+          id: req_629c7f665a4a4ac68e0abfea4260801a
+          created: 1756437379086
+          modified: 1756565445341
+          isPrivate: false
+          description: ""
+          sortKey: -1756437379086
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"customerId": "d4e84428-20d1-7013-9c98-853f2c921f08",
+            	"carId": 1011,
+            	"amountPaid": 120000
+            }
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          prefix: Bearer
+          token: eyJraWQiOiIrcStCS1hQbnE0eHVvQUU3RTFkaEtoTXAxRlErYXdOOVBweVBJZ2g1NWlZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkNGU4NDQyOC0yMGQxLTcwMTMtOWM5OC04NTNmMmM5MjFmMDgiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9FWTU1SWhkYzUiLCJjbGllbnRfaWQiOiI0cGExOGxhNzczYXRrdGMzOGRmNWV0cDJodCIsIm9yaWdpbl9qdGkiOiIyODFlODUxZi04NmViLTQ5NjEtYWE2ZS01NTgwYWNmNWMwZDMiLCJldmVudF9pZCI6IjNmNmM2MDYwLWQxMWEtNDU4NC1iNjQwLWMzMjdmZThlMmUxOCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NTY1NjQ0MTQsImV4cCI6MTc1NjU2ODAxNCwiaWF0IjoxNzU2NTY0NDE0LCJqdGkiOiI3ZjZiMzUyNC1iOWJjLTRmZjMtYmUwNS1lMWEyMGMwNGU3ZDciLCJ1c2VybmFtZSI6ImRpbGFubGltYSJ9.gxf5Je5OdU1-bml7Hfn4QjQLPm1lm2jn8-kKOdykEv88gc-02GnvQQ0krS9pngkJfVeJ2mCREYTfxWvZdl3PLJm5YEanQf6IKq1MdIQSSL8I5lX089QmI6t80SLK0NHySQLVprDnv7bn6EUZv-Edz8-BrFw_s-GOhK3GCq1nHy5Pt0OO0X0fAqt6cPJ4L4pTPkogmrAfF0GiIqu8D92k6o8lyTokoEA6SwMD0e63-SD4CNDY7lxip8uJzKaX_0VM6VLtbL4QjjQTmuZc55Kvn2zUuj3-q2ZPFJcoLgIvYBIW2LbWWJaHC-qkZXNq2t-BVpR8mJc3S9ZimgFCOwNK5g
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/sale/all
+        name: List all sales
+        meta:
+          id: req_380004579a27491cb2c43d538d9e07ef
+          created: 1756565194829
+          modified: 1756565280612
+          isPrivate: false
+          description: ""
+          sortKey: -1756565194829
+        method: GET
+        parameters:
+          - name: page
+            value: "0"
+            disabled: false
+          - name: size
+            value: "20"
+            disabled: false
+        headers:
+          - name: accept
+            value: "*/*"
+        authentication:
+          type: bearer
+          prefix: Bearer
+          token: eyJraWQiOiIrcStCS1hQbnE0eHVvQUU3RTFkaEtoTXAxRlErYXdOOVBweVBJZ2g1NWlZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkNGU4NDQyOC0yMGQxLTcwMTMtOWM5OC04NTNmMmM5MjFmMDgiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9FWTU1SWhkYzUiLCJjbGllbnRfaWQiOiI0cGExOGxhNzczYXRrdGMzOGRmNWV0cDJodCIsIm9yaWdpbl9qdGkiOiI0Y2FlZjliNC0wNTQ5LTQ5ZjQtOWZkNy1kOTJlMTBhYjYzMjMiLCJldmVudF9pZCI6ImQ5MTI2ZThmLWY1ZGEtNDNjNS1hMTYzLTM4ODM2YTJiNWE2NiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NTY1NjQ0NTAsImV4cCI6MTc1NjU2ODA1MCwiaWF0IjoxNzU2NTY0NDUwLCJqdGkiOiI2YWY1MzcyZC01YmE4LTQ0YjctYTI5MC1jYjFjZDdiODFmNjgiLCJ1c2VybmFtZSI6ImRpbGFubGltYSJ9.WD1C5PedGwo-mmCsKxOTPfI37n0K0Bhz4HntHzgAd9L2im1S3TrKctP4U9oElw8X7Deo3LGZgfI9FANlfGorE13kZ5A-YmugXoEQ-Kofcs6OkEqH1hzkqp4SiYsfiG2dDheYdNRwE8-br4DwiGOD6aQxrnM7jCV4Up9Tmu8kUifWSmD29GlBDEYZNX50p-jttHyiYYIkHWDeyBVenMmJmwiWkevdnsoKvkA99cJu7hsVfqQb5lPKQLXJ0GcpPAb_hl_vkX-tL_7VAIzGV4k10tP5unCRWJycoP3BDu_ISgOynPvPtFl2-NRx2-PYW_rTou1CoPpRx4wUaPPbEnFTRg
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/sale/2011
+        name: Sale by id
+        meta:
+          id: req_7c50f5f48a7a49c4a1f7ad056b799740
+          created: 1756565333069
+          modified: 1756565556896
+          isPrivate: false
+          description: ""
+          sortKey: -1756565333069
+        method: GET
+        headers:
+          - name: accept
+            value: "*/*"
+        authentication:
+          type: bearer
+          prefix: Bearer
+          token: eyJraWQiOiIrcStCS1hQbnE0eHVvQUU3RTFkaEtoTXAxRlErYXdOOVBweVBJZ2g1NWlZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkNGU4NDQyOC0yMGQxLTcwMTMtOWM5OC04NTNmMmM5MjFmMDgiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9FWTU1SWhkYzUiLCJjbGllbnRfaWQiOiI0cGExOGxhNzczYXRrdGMzOGRmNWV0cDJodCIsIm9yaWdpbl9qdGkiOiI0Y2FlZjliNC0wNTQ5LTQ5ZjQtOWZkNy1kOTJlMTBhYjYzMjMiLCJldmVudF9pZCI6ImQ5MTI2ZThmLWY1ZGEtNDNjNS1hMTYzLTM4ODM2YTJiNWE2NiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NTY1NjQ0NTAsImV4cCI6MTc1NjU2ODA1MCwiaWF0IjoxNzU2NTY0NDUwLCJqdGkiOiI2YWY1MzcyZC01YmE4LTQ0YjctYTI5MC1jYjFjZDdiODFmNjgiLCJ1c2VybmFtZSI6ImRpbGFubGltYSJ9.WD1C5PedGwo-mmCsKxOTPfI37n0K0Bhz4HntHzgAd9L2im1S3TrKctP4U9oElw8X7Deo3LGZgfI9FANlfGorE13kZ5A-YmugXoEQ-Kofcs6OkEqH1hzkqp4SiYsfiG2dDheYdNRwE8-br4DwiGOD6aQxrnM7jCV4Up9Tmu8kUifWSmD29GlBDEYZNX50p-jttHyiYYIkHWDeyBVenMmJmwiWkevdnsoKvkA99cJu7hsVfqQb5lPKQLXJ0GcpPAb_hl_vkX-tL_7VAIzGV4k10tP5unCRWJycoP3BDu_ISgOynPvPtFl2-NRx2-PYW_rTou1CoPpRx4wUaPPbEnFTRg
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/sale/reserved/2011/pay
+        name: Finalize sale
+        meta:
+          id: req_052af869756640e0abb022ac7112c4e6
+          created: 1756565403211
+          modified: 1756565575220
+          isPrivate: false
+          description: ""
+          sortKey: -1756565403211
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"customerId": "d4e84428-20d1-7013-9c98-853f2c921f08",
+            	"carId": 1011,
+            	"amountPaid": 60000
+            }
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          prefix: Bearer
+          token: eyJraWQiOiIrcStCS1hQbnE0eHVvQUU3RTFkaEtoTXAxRlErYXdOOVBweVBJZ2g1NWlZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJkNGU4NDQyOC0yMGQxLTcwMTMtOWM5OC04NTNmMmM5MjFmMDgiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9FWTU1SWhkYzUiLCJjbGllbnRfaWQiOiI0cGExOGxhNzczYXRrdGMzOGRmNWV0cDJodCIsIm9yaWdpbl9qdGkiOiI0Y2FlZjliNC0wNTQ5LTQ5ZjQtOWZkNy1kOTJlMTBhYjYzMjMiLCJldmVudF9pZCI6ImQ5MTI2ZThmLWY1ZGEtNDNjNS1hMTYzLTM4ODM2YTJiNWE2NiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3NTY1NjQ0NTAsImV4cCI6MTc1NjU2ODA1MCwiaWF0IjoxNzU2NTY0NDUwLCJqdGkiOiI2YWY1MzcyZC01YmE4LTQ0YjctYTI5MC1jYjFjZDdiODFmNjgiLCJ1c2VybmFtZSI6ImRpbGFubGltYSJ9.WD1C5PedGwo-mmCsKxOTPfI37n0K0Bhz4HntHzgAd9L2im1S3TrKctP4U9oElw8X7Deo3LGZgfI9FANlfGorE13kZ5A-YmugXoEQ-Kofcs6OkEqH1hzkqp4SiYsfiG2dDheYdNRwE8-br4DwiGOD6aQxrnM7jCV4Up9Tmu8kUifWSmD29GlBDEYZNX50p-jttHyiYYIkHWDeyBVenMmJmwiWkevdnsoKvkA99cJu7hsVfqQb5lPKQLXJ0GcpPAb_hl_vkX-tL_7VAIzGV4k10tP5unCRWJycoP3BDu_ISgOynPvPtFl2-NRx2-PYW_rTou1CoPpRx4wUaPPbEnFTRg
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Customer
+    meta:
+      id: fld_ae0577cf247744999f25a6a0aac29a6c
+      created: 1756564221527
+      modified: 1756565060690
+      sortKey: -1756564221527
+      description: ""
+    children:
+      - url: http://localhost:8080/fiapcar/customer/new
+        name: New User
+        meta:
+          id: req_34c53997f59d4c83a8a62cad6404f53b
+          created: 1756564228182
+          modified: 1756564468167
+          isPrivate: false
+          description: ""
+          sortKey: -1756564228182
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Dilan Lima",
+            	"email": "Dilan_limacampos@hotmail.com",
+            	"username": "dilanlima"
+            }
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/customer/d4e84428-20d1-7013-9c98-853f2c921f08
+        name: customer by id
+        meta:
+          id: req_f77a2ae324ab42fb8e94be4ef111f934
+          created: 1756565014223
+          modified: 1756565033381
+          isPrivate: false
+          description: ""
+          sortKey: -1756565014223
+        method: GET
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/customer/all
+        name: List of customers
+        meta:
+          id: req_c594e678fe0f49dcb4c3ef45b06da70e
+          created: 1756565067965
+          modified: 1756565101332
+          isPrivate: false
+          description: ""
+          sortKey: -1756565067965
+        method: GET
+        parameters:
+          - name: page
+            value: "0"
+            disabled: false
+          - name: size
+            value: "20"
+            disabled: false
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Auth
+    meta:
+      id: fld_2e8fad2ccc104ac4a2c72eb1180c4888
+      created: 1756564429916
+      modified: 1756564429916
+      sortKey: -1756564429916
+      description: ""
+    children:
+      - url: http://localhost:8080/fiapcar/auth/login
+        name: Login
+        meta:
+          id: req_7dcdd29d6e8b42d0bfcf6bbc73e994e8
+          created: 1756564434828
+          modified: 1756564461119
+          isPrivate: false
+          description: ""
+          sortKey: -1756564434828
+        method: POST
+        parameters:
+          - name: username
+            value: dilanlima
+            disabled: false
+          - name: password
+            value: "[RR}L8?r#'tZ"
+            disabled: false
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Car
+    meta:
+      id: fld_b00ac0c5227741bcb7806df0d5f165e2
+      created: 1756564547272
+      modified: 1756564547272
+      sortKey: -1756564547272
+      description: ""
+    children:
+      - url: http://localhost:8080/fiapcar/car
+        name: New Car
+        meta:
+          id: req_26b7eb95fa6b4956b4662276d32d021b
+          created: 1756564553124
+          modified: 1756564605316
+          isPrivate: false
+          description: ""
+          sortKey: -1756564553124
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"brandId": 1,
+            	"model": "Tiguan Allspace R-Line 4Motion 350 TSI",
+            	"year": 2021,
+            	"color": "BLACK",
+            	"condition": "USED",
+            	"fuelType": "GAS",
+            	"transmission": 1,
+            	"mileage": 52865,
+            	"price": 179.9,
+            	"plate": "GAP2B56",
+            	"description": "PRETTY GOOD"
+            }
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/car/1011
+        name: Car by id
+        meta:
+          id: req_cb1109d45b914ade9adc2e5a0f7bac2c
+          created: 1756564610023
+          modified: 1756564619026
+          isPrivate: false
+          description: ""
+          sortKey: -1756564610023
+        method: GET
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/car/1011
+        name: Update by id
+        meta:
+          id: req_ceaf2ff860a044da9473db875db5a559
+          created: 1756564655097
+          modified: 1756564664124
+          isPrivate: false
+          description: ""
+          sortKey: -1756564655097
+        method: PATCH
+        body:
+          text: '{   "brandId": 1,   "model": "Tiguan Allspace R-Line 4Motion 350
+            TSI",   "year": 2021,   "color": "BLACK",   "condition":
+            "USED",   "fuelType": "GAS",   "transmission": 1,   "mileage":
+            52865,   "price": 179000.9,   "plate": "GAP2B56",   "description":
+            "PRETTY GOOD" }'
+          mimeType: application/json
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/car/list
+        name: List of cars
+        meta:
+          id: req_ec28f3095c7f4ddd9155771ec9a6ae3b
+          created: 1756564706181
+          modified: 1756564722717
+          isPrivate: false
+          description: ""
+          sortKey: -1756564706181
+        method: GET
+        parameters:
+          - name: status
+            value: "1"
+            disabled: true
+            id: pair_a71d87a510d04be2b0b326ac9928cb96
+          - name: brandId
+            value: "1"
+            disabled: true
+            id: pair_18ce4159c7cd499490abe9c0f9c03949
+          - name: modelYear
+            value: "1"
+            disabled: true
+            id: pair_f664e2c016d8467d9b6627bec6649310
+          - name: model
+            value: "1"
+            disabled: true
+            id: pair_66abc5323be64e35b4ade27b893cdff0
+          - name: minPrice
+            value: "1"
+            disabled: true
+            id: pair_dedfc5b64be64db6b42f33a78c807a9b
+          - name: maxPrice
+            value: "1"
+            disabled: true
+            id: pair_ea867762c7d043199dffb49f5a246dcd
+          - name: page
+            value: "0"
+            disabled: false
+            id: pair_7ac161bc65e34dbc8d089762cd81820d
+          - name: size
+            value: "20"
+            disabled: false
+            id: pair_b1c756514f644945885f73fff9d54b95
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Brand
+    meta:
+      id: fld_b8ce998e5cc0468e900fc2307cc09946
+      created: 1756564773744
+      modified: 1756564838670
+      sortKey: -1756564773744
+      description: ""
+    children:
+      - url: http://localhost:8080/fiapcar/brand
+        name: New Brand
+        meta:
+          id: req_4cbab56a8cbd4aff9a4eb45a36598030
+          created: 1756564778851
+          modified: 1756564784452
+          isPrivate: false
+          description: ""
+          sortKey: -1756564778851
+        method: POST
+        body:
+          text: '{   "name": "BYD" }'
+          mimeType: application/json
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/brand/13
+        name: Brand by id
+        meta:
+          id: req_4d6f9bab688c4fe1bc980944e1212990
+          created: 1756564842717
+          modified: 1756564853458
+          isPrivate: false
+          description: ""
+          sortKey: -1756564842717
+        method: GET
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/brand/13
+        name: Update by id
+        meta:
+          id: req_79b22c772868405d911ab5021e350710
+          created: 1756564893368
+          modified: 1756564904103
+          isPrivate: false
+          description: ""
+          sortKey: -1756564893368
+        method: PATCH
+        body:
+          text: '{   "name": "BYDed" }'
+          mimeType: application/json
+        headers:
+          - name: accept
+            value: "*/*"
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/fiapcar/brand/all
+        name: List of brands
+        meta:
+          id: req_0a439d925e4341e899b786657d8ed7be
+          created: 1756564924114
+          modified: 1756564935649
+          isPrivate: false
+          description: ""
+          sortKey: -1756564924114
+        method: GET
+        parameters:
+          - name: page
+            value: "0"
+            disabled: false
+          - name: size
+            value: "20"
+            disabled: false
+        headers:
+          - name: accept
+            value: "*/*"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_6ffbbd9c5fbb8c795a985f2d3ec783f6d388009c
+    created: 1756437363148
+    modified: 1756565417437
+  cookies:
+    - key: JSESSIONID
+      value: 12A2DFB1B8C9578A4AD4151025277581
+      domain: localhost
+      path: /fiapcar
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-08-29T03:17:24.878Z
+      lastAccessed: 2025-08-30T14:50:17.436Z
+      id: 9e0731b4-76b8-4eae-92b6-169cfd0932e4
+environments:
+  name: Base Environment
+  meta:
+    id: env_6ffbbd9c5fbb8c795a985f2d3ec783f6d388009c
+    created: 1756437363143
+    modified: 1756437363143
+    isPrivate: false

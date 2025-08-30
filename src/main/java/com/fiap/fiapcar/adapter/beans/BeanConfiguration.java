@@ -1,6 +1,5 @@
 package com.fiap.fiapcar.adapter.beans;
 
-import com.fiap.fiapcar.application.model.CustomerDTO;
 import com.fiap.fiapcar.application.ports.in.*;
 import com.fiap.fiapcar.application.ports.out.*;
 import com.fiap.fiapcar.application.services.*;

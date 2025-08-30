@@ -2,7 +2,6 @@ package com.fiap.fiapcar.adapter.out.implementations;
 
 import com.fiap.fiapcar.adapter.mappers.BrandMapper;
 import com.fiap.fiapcar.adapter.out.repository.BrandRepository;
-import com.fiap.fiapcar.adapter.out.repository.entity.BrandEntity;
 import com.fiap.fiapcar.application.model.BrandDTO;
 import com.fiap.fiapcar.application.ports.out.BrandDatabasePort;
 import lombok.RequiredArgsConstructor;

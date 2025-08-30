@@ -86,6 +86,7 @@ public class SalePortImpl implements SalePort {
             throw new RuntimeException("Amount paid is not enough to complete sale");
         }
 
+        car.setStatus("PAID");
         return saleDatabasePort.finalizeSale(updatePayment(saleDTO, sale),id);
     }
 
